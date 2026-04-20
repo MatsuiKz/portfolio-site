@@ -68,7 +68,7 @@ const certifications = [
           </p>
 
           <!-- Certifications -->
-          <div>
+          <div class="mb-6">
             <p class="text-sm font-semibold text-gray-300 mb-3">保有資格</p>
             <ul class="flex flex-wrap gap-2">
               <li
@@ -80,6 +80,19 @@ const certifications = [
               </li>
             </ul>
           </div>
+
+          <!-- Resume -->
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-white text-sm font-medium rounded-lg transition-colors duration-200"
+          >
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            職務経歴書 (PDF)
+          </a>
         </div>
 
         <!-- Skills -->
