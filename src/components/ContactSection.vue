@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const emailAddress = 'biz.matsuik@gmail.com'
+const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`
 </script>
 
 <template>
@@ -25,7 +26,7 @@ const emailAddress = 'biz.matsuik@gmail.com'
         </a>
 
         <a
-          href="/resume.pdf"
+          :href="resumeUrl"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2.5 px-8 py-4 border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-white font-semibold rounded-xl transition-colors duration-200 text-lg"

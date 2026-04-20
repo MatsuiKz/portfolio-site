@@ -39,6 +39,8 @@ const certifications = [
   '基本情報技術者',
   'Oracle認定 Java SE 7 Silver',
 ]
+
+const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`
 </script>
 
 <template>
@@ -83,7 +85,7 @@ const certifications = [
 
           <!-- Resume -->
           <a
-            href="/resume.pdf"
+            :href="resumeUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2.5 border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-white text-sm font-medium rounded-lg transition-colors duration-200"
