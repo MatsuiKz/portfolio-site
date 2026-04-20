@@ -5,95 +5,131 @@ interface Career {
   summary: string
   tags: string[]
   detailUrl?: string
+  type: 'freelance' | 'employee'
 }
 
-const careers: Career[] = [
+const freelanceCareers: Career[] = [
   {
-    period: '2024年〜現在',
+    period: '2025年10月〜2026年3月',
+    title: '動画配信サービス保守',
+    summary:
+      '動画配信サービスのインフラ刷新・長期安定化を担当。AWS（ECS / EC2）移行設計・構築、Java バージョンアップ対応、JMeter を用いた性能試験・長期安定化試験を実施。',
+    tags: ['Java', 'Spring Boot', 'Shell', 'AWS', 'Docker', 'JMeter'],
+    type: 'freelance',
+  },
+  {
+    period: '2024年5月〜2025年9月',
     title: '電力取引システムリプレイス',
     summary:
-      '電力業界向けの基幹取引システムをモダンスタックでリプレイス。TypeScript / Node.js によるバックエンドAPI設計・実装、PostgreSQL のスキーマ設計・クエリ最適化を担当。',
-    tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'REST API'],
-    detailUrl: 'https://docs.google.com/document/d/your-doc-id-1',
+      '電力業界向け基幹取引システムのバックエンドを新規構築。GitHub Copilot を活用した開発効率化により Jest テストカバレッジ 100% を維持しながら設計・実装を推進。',
+    tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'Jest'],
+    type: 'freelance',
   },
   {
-    period: '2023年〜2024年',
-    title: '大手SIer案件対応',
+    period: '2023年8月〜2024年1月',
+    title: '大手SI企業内 複数PJ支援',
     summary:
-      '大手 SIer の業務システム開発プロジェクトに参画。Java を用いたバックエンド開発、Vue.js による SPA フロントエンド開発、Node.js を活用した BFF 層の実装を担当。',
-    tags: ['Java', 'Vue.js', 'Node.js', 'Spring Boot'],
-    detailUrl: 'https://docs.google.com/document/d/your-doc-id-2',
+      '大手 SIer 内の複数プロジェクトを横断支援。Vue.js / Node.js を短期習得してフロントエンド・BFF 開発に参画。テストスケジュールの課題を分析し改善提案を主導。',
+    tags: ['Java', 'Vue.js', 'Node.js', 'PHP', 'PostgreSQL'],
+    type: 'freelance',
+  },
+]
+
+const employeeCareers: Career[] = [
+  {
+    period: '2018年4月〜2023年5月',
+    title: '情報配信サービス開発・保守',
+    summary:
+      '情報配信サービスの開発・保守に長期従事。iOS アプリ開発（Swift）、大手通信キャリア向けバッチ処理の設計〜リリースまで一貫して担当。',
+    tags: ['Java', 'Swift', 'PHP', 'Laravel', 'Oracle'],
+    type: 'employee',
   },
   {
-    period: '2021年〜2023年',
-    title: '大手キャリア協業システム開発',
+    period: '2009年9月〜2018年3月',
+    title: '受託開発・SE（リーダー経験）',
     summary:
-      '大手通信キャリアとの協業プロジェクト。Java / PHP による大規模 Web アプリ開発、Shell スクリプトを活用したバッチ処理・運用自動化を担当。',
-    tags: ['Java', 'PHP', 'Shell Script', 'Linux'],
-    detailUrl: 'https://docs.google.com/document/d/your-doc-id-3',
+      '受託開発 SE としてチームリーダーを経験。Oracle SQL チューニングにより処理時間を 7 秒→3 秒に改善。新卒エンジニア向け教育スキームの構築・運用も担当。',
+    tags: ['Java', 'Oracle', 'Spring'],
+    type: 'employee',
   },
 ]
 </script>
 
 <template>
   <section id="career" class="py-24 bg-gray-900">
-    <div class="max-w-6xl mx-auto section-padding">
+    <div class="max-w-5xl mx-auto section-padding">
       <!-- Header -->
       <div class="mb-16 text-center">
         <p class="text-primary-400 text-xs font-semibold tracking-[0.3em] uppercase mb-2">Career</p>
         <h2 class="text-3xl sm:text-4xl font-bold text-white">主要案件</h2>
-        <p class="mt-3 text-gray-500 text-sm">詳細は各案件の「詳細を見る」からご確認ください</p>
       </div>
 
-      <!-- Timeline -->
-      <div class="relative">
-        <!-- Vertical line -->
-        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-800 -translate-x-1/2" />
+      <!-- Freelance -->
+      <div class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="px-3 py-1 bg-primary-900/40 border border-primary-700/50 text-primary-300 text-xs font-semibold rounded-full tracking-widest uppercase">
+            Freelance
+          </span>
+          <div class="flex-1 h-px bg-gray-800" />
+        </div>
 
-        <div class="space-y-12">
+        <div class="relative pl-6 border-l border-gray-800 space-y-6">
           <div
-            v-for="(career, index) in careers"
+            v-for="career in freelanceCareers"
             :key="career.title"
-            :class="[
-              'relative flex flex-col md:flex-row gap-8',
-              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse',
-            ]"
+            class="relative"
           >
-            <!-- Dot -->
-            <div class="absolute left-4 md:left-1/2 top-1 w-3 h-3 bg-primary-500 rounded-full border-2 border-gray-900 -translate-x-1/2 z-10" />
-
-            <!-- Spacer for alternating layout -->
-            <div class="hidden md:block md:w-1/2" />
-
-            <!-- Card -->
-            <div class="ml-10 md:ml-0 md:w-1/2 md:px-8">
-              <div class="bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-primary-700/50 transition-colors duration-300">
-                <span class="text-xs font-medium text-primary-400 bg-primary-900/30 px-2.5 py-1 rounded-full">
-                  {{ career.period }}
-                </span>
-                <h3 class="text-lg font-bold text-white mt-3 mb-2">{{ career.title }}</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">{{ career.summary }}</p>
-                <div class="flex flex-wrap gap-1.5 mb-4">
-                  <span
-                    v-for="tag in career.tags"
-                    :key="tag"
-                    class="px-2 py-0.5 bg-gray-800 text-gray-400 text-xs rounded border border-gray-700"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-                <a
-                  v-if="career.detailUrl"
-                  :href="career.detailUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 text-sm text-primary-400 hover:text-primary-300 transition-colors"
+            <div class="absolute -left-[25px] top-1.5 w-3 h-3 bg-primary-500 rounded-full border-2 border-gray-900" />
+            <div class="bg-gray-950 border border-gray-800 rounded-xl p-5 hover:border-primary-700/50 transition-colors duration-300">
+              <span class="text-xs font-medium text-primary-400 bg-primary-900/30 px-2.5 py-1 rounded-full">
+                {{ career.period }}
+              </span>
+              <h3 class="text-base font-bold text-white mt-3 mb-1.5">{{ career.title }}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-3">{{ career.summary }}</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  v-for="tag in career.tags"
+                  :key="tag"
+                  class="px-2 py-0.5 bg-gray-800 text-gray-400 text-xs rounded border border-gray-700"
                 >
-                  詳細を見る（Google ドキュメント）
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
+                  {{ tag }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <span class="px-3 py-1 bg-gray-700/50 border border-gray-600/50 text-gray-400 text-xs font-semibold rounded-full tracking-widest uppercase">
+            Employee
+          </span>
+          <div class="flex-1 h-px bg-gray-800" />
+        </div>
+
+        <div class="relative pl-6 border-l border-gray-800 space-y-6">
+          <div
+            v-for="career in employeeCareers"
+            :key="career.title"
+            class="relative"
+          >
+            <div class="absolute -left-[25px] top-1.5 w-3 h-3 bg-gray-600 rounded-full border-2 border-gray-900" />
+            <div class="bg-gray-950 border border-gray-800 rounded-xl p-5 hover:border-gray-700 transition-colors duration-300">
+              <span class="text-xs font-medium text-gray-400 bg-gray-800 px-2.5 py-1 rounded-full">
+                {{ career.period }}
+              </span>
+              <h3 class="text-base font-bold text-white mt-3 mb-1.5">{{ career.title }}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-3">{{ career.summary }}</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  v-for="tag in career.tags"
+                  :key="tag"
+                  class="px-2 py-0.5 bg-gray-800 text-gray-400 text-xs rounded border border-gray-700"
+                >
+                  {{ tag }}
+                </span>
               </div>
             </div>
           </div>
