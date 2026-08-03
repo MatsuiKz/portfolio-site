@@ -54,6 +54,29 @@ npm run preview
 
 3. `main` ブランチへ push するとデプロイが開始されます。
 
+## 職務経歴書PDFの更新
+
+About セクションからリンクしている職務経歴書は `public/resume.pdf` です。更新手順は以下のとおり。
+
+1. 新しいPDFを `public/resume.pdf` に上書きコピーする（**ファイル名は `resume.pdf` のまま固定**）。
+
+   ```bash
+   cp /path/to/新しい職務経歴書.pdf public/resume.pdf
+   ```
+
+2. コミットして `main` へ push する。
+
+   ```bash
+   git add public/resume.pdf
+   git commit -m "職務経歴書PDFを更新"
+   git push origin main
+   ```
+
+3. push により GitHub Actions が動き、数分後に公開サイトへ反映される。
+
+> - ファイル名を変えると `AboutSection.vue`（`${import.meta.env.BASE_URL}resume.pdf` で参照）がリンク切れになるので変更しないこと。
+> - `public/` 配下はそのまま `dist/` にコピーされるため、ビルド設定の変更は不要。
+
 ## カスタマイズ
 
 | ファイル | 変更内容 |
